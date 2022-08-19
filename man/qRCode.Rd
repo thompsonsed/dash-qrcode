@@ -6,7 +6,7 @@
 \title{QRCode component}
 
 \description{
-A Dash component for playing a variety of URLs, including file paths, YouTube, Facebook, Twitch, SoundCloud, Streamable, Vimeo, Wistia, Mixcloud, and DailyMotion.
+A Dash component for reading QR codes from an attached webcam.
 }
 
 \usage{

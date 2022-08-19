@@ -1,6 +1,6 @@
 {
   "src/lib/components/QRCode.react.js": {
-    "description": "A Dash component for playing a variety of URLs, including file paths,\nYouTube, Facebook, Twitch, SoundCloud, Streamable, Vimeo, Wistia, Mixcloud,\nand DailyMotion.",
+    "description": "A Dash component for reading QR codes from an attached webcam.",
     "displayName": "QRCode",
     "methods": [
       {
@@ -57,7 +57,7 @@
         "required": false,
         "description": "Delay for the scanning in ms.",
         "defaultValue": {
-          "value": "300",
+          "value": "2000",
           "computed": false
         }
       },

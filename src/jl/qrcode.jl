@@ -6,9 +6,7 @@ export qrcode
     qrcode(;kwargs...)
 
 A QRCode component.
-A Dash component for playing a variety of URLs, including file paths,
-YouTube, Facebook, Twitch, SoundCloud, Streamable, Vimeo, Wistia, Mixcloud,
-and DailyMotion.
+A Dash component for reading QR codes from an attached webcam.
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this compnent in Dash callbacks
 - `result` (String; optional): Prop that will contain the result

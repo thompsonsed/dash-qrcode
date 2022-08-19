@@ -11,8 +11,9 @@ app.layout = html.Div(
         html.P("Testing"),
         html.Br(),
         html.Div(html.Button("Start scanning", id="start-scanning-button")),
-        html.Div(dash_qrcode.QRCode(id="qr-input"), style={"width": "300px"}),
+        html.Div(dash_qrcode.QRCode(id="qr-input", scanDelay=1000), style={"width": "300px"}),
         html.P(id="output"),
+        html.P(id="all-output"),
     ]
 )
 
@@ -30,11 +31,19 @@ def start_scanning(n_clicks, scan_state) -> tuple[str, str]:
     return "idle", "Start scanning"
 
 
-@app.callback(Output("output", "children"), Input("qr-input", "result"))
-def get_qr_result(result: str | None) -> str:
+@app.callback(
+    Output("output", "children"),
+    Output("all-output", "children"),
+    Input("qr-input", "result"),
+    State("all-output", "children"),
+)
+def get_qr_result(result: str | None, all_output) -> tuple[str, str]:
+    if not all_output:
+        all_output = ""
     if result:
-        return f"Scanned value: {result}"
-    return ""
+        all_output += f"{result}, "
+        return f"Scanned value: {result}", all_output
+    return "", all_output
 
 
 if __name__ == "__main__":
