@@ -1,7 +1,8 @@
-import dash_qrcode
 import dash
-from dash.dependencies import Input, Output, State
 from dash import html
+from dash.dependencies import Input, Output, State
+
+import dash_qrcode
 
 app = dash.Dash(__name__)
 
