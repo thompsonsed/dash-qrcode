@@ -1,5 +1,3 @@
 from .QRCode import QRCode
 
-__all__ = [
-    "QRCode"
-]
+__all__ = ["QRCode"]
