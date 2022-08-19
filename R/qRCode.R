@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-qRCode <- function(id=NULL, error=NULL, loading_state=NULL, result=NULL) {
+qRCode <- function(id=NULL, result=NULL, scanDelay=NULL, status=NULL) {
     
-    props <- list(id=id, error=error, loading_state=loading_state, result=result)
+    props <- list(id=id, result=result, scanDelay=scanDelay, status=status)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@ qRCode <- function(id=NULL, error=NULL, loading_state=NULL, result=NULL) {
         props = props,
         type = 'QRCode',
         namespace = 'dash_qrcode',
-        propNames = c('id', 'error', 'loading_state', 'result'),
+        propNames = c('id', 'result', 'scanDelay', 'status'),
         package = 'dashQrcode'
         )
 

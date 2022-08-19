@@ -26,7 +26,6 @@
   "dependencies": {
     "glob-parent": "^6.0.2",
     "ramda": "^0.26.1",
-    "react-alignment-viewer": "^0.5.5",
     "react-qr-reader": "^2.2.1"
   },
   "devDependencies": {
