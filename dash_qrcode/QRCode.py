@@ -20,7 +20,7 @@ Keyword arguments:
 - scanDelay (number; default 300):
     Delay for the scanning in ms.
 
-- status (string; optional):
+- status (string; default 'idle'):
     Contains the status of the renderer."""
     _children_props = []
     _base_nodes = ['children']

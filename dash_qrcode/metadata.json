@@ -77,7 +77,11 @@
           "name": "string"
         },
         "required": false,
-        "description": "Contains the status of the renderer"
+        "description": "Contains the status of the renderer",
+        "defaultValue": {
+          "value": "'idle'",
+          "computed": false
+        }
       }
     }
   }

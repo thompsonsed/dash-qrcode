@@ -40,9 +40,7 @@ export default class QRCode extends Component {
 
 
     handleClickScan = () => {
-        console.log("Hanlding click scan"); // TODO remove
         const { setProps, status } = this.props;
-        console.log(status); // TODO remove
         setProps({
             result: null,
             status: status === 'reader' ? 'idle' : 'reader',
@@ -51,11 +49,10 @@ export default class QRCode extends Component {
     };
 
     handleScan = data => {
-        console.log("Handling scan");
         const { setProps } = this.props;
         if (data) {
             setProps({
-                result: JSON.parse(data),
+                result: data.text,
                 status: 'idle',
             });
         }
@@ -69,49 +66,31 @@ export default class QRCode extends Component {
         const {
             result, scanDelay, status
         } = this.props;
-        console.log("Rendering"); // TODO remove
-        console.log(scanDelay); // TODO remove
-        console.log(result); // TODO remove
-        console.log(status); // TODO remove
-        const output = {};
-
+        const { id, loading_state } = this.props;
         if (status === 'reader') {
-            output.reader = (
-                // <div style={styles.reader}>
-                <QrReader
-                    scanDelay={scanDelay}
-                    onError={this.handleError}
-                    onScan={this.handleScan}
-                    style={{ width: '100%' }}
-                />
-                // </div>
+            return (
+                <div
+                    id={id}
+                    data-dash-is-loading={
+                        (loading_state && loading_state.is_loading) || undefined
+                    }>
+                    <QrReader
+                        scanDelay={scanDelay}
+                        onError={this.handleError}
+                        onResult={this.handleScan}
+                        style={{ width: '100%' }}
+                    />
+                </div>
             );
         }
-
-        if (result) {
-            if (isObject(result)) {
-                output.result = (
-                    <div>
-                        <h3>Hello {result.name}</h3>
-                        <p>
-                            Your ID is <i>{result.id}</i> and you're an <b>INSIDER</b>
-                        </p>
-                    </div>
-                );
-            }
-        }
-
         return (
-            <div style={styles.root}>
-                <h1 style={styles.h1}>QRCode with JSON</h1>
-                <div style={styles.qrcode}>
-                    <button style={styles.button} onClick={this.handleClickScan}>
-                        {status === 'reader' ? 'STOP' : 'SCAN'}
-                    </button>
+            <div
+                id={id}
+                data-dash-is-loading={
+                    (loading_state && loading_state.is_loading) || undefined
+                }
+            >
 
-                    {output.reader}
-                    {output.result}
-                </div>
             </div>
         );
     }
@@ -149,6 +128,7 @@ QRCode.propTypes = {
 QRCode.defaultProps = {
     scanDelay: 300,
     result: null,
+    status: 'idle',
 };
 
 // /**
