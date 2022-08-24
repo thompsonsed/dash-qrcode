@@ -10,16 +10,17 @@ def test_render_component(dash_duo):
 
     # Get the generated component input with selenium
     # The html input will be a children of the #input dash component
-    my_component = dash_duo.find_element("#input > input")
+    qr_component = dash_duo.find_element("#input > qr-input")
 
-    assert "my-value" == my_component.get_attribute("value")
+    assert qr_component.get_attribute("result") is None
+    assert qr_component.get_attribute("status") == "idle"
 
     # Clear the input
-    dash_duo.clear_input(my_component)
-
+    button_component = dash_duo.find_element("#input > start-scanning-button")
+    assert qr_component.get_attribute("n_clicks") == 0
     # Send keys to the custom input.
-    my_component.send_keys("Hello dash")
+    qr_component.click()
 
     # Wait for the text to equal, if after the timeout (default 10 seconds)
     # the text is not equal it will fail the test.
-    dash_duo.wait_for_text_to_equal("#output", "You have entered Hello dash")
+    dash_duo.wait_for_property_to_equal("#input > start-scanning_button", "status", "reading")
