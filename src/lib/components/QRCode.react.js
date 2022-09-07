@@ -54,6 +54,7 @@ export default class QRCode extends Component {
                         scanDelay={scanDelay}
                         onError={this.handleError}
                         onResult={this.handleScan}
+                        constraints={{facingMode: 'environment'}}
                         style={{ width: '100%' }}
                     />
                 </div>
